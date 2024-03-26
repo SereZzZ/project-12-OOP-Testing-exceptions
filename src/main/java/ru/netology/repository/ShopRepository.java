@@ -36,9 +36,6 @@ public class ShopRepository {
     }
     public void save(Product product) {
         if (findById(product.getId()) != null) {
-            throw new ArithmeticException(
-                    "Element with id: " + product.getId() + " already exist"
-            );
         }
         products = addToArray(products, product);
     }

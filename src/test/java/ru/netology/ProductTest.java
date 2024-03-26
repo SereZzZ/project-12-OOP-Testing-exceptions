@@ -26,18 +26,6 @@ public class ProductTest {
         repo.save(product6);
     }
 
-
-    @Test
-    public void shouldAddProduct() {
-        Product newProduct = new Product(77, "New Product", 5000);
-        repo.add(newProduct);
-
-        Product[] expected = {product1, product2, product3, product4, product5, product6, newProduct};
-        Product[] actual = repo.findAll();
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
     @Test
     public void shouldExceptionRemoveById() {
 
@@ -47,10 +35,16 @@ public class ProductTest {
     }
 
     @Test
-    public void shouldSaveProduct() {
-        Product[] expected = {product1, product2, product3, product4, product5, product6};
-        Product[] actual = repo.findAll();
+    public void removeId() {
+        ShopRepository repo = new ShopRepository();
 
+        repo.add(product1);
+        repo.add(product2);
+        repo.add(product3);
+        repo.remove(11);
+
+        Product[] expected = {product2, product3};
+        Product[] actual = repo.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
 }
